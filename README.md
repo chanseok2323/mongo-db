@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # mongo-db를 이용한 간단한 게시판 
 주로 aurora, mysql 같은 관계형 DBMS 만 사용을 해왔으며, mongo db를 이용해서 개발을 진행을 해보고 싶었습니다.
 
@@ -31,3 +32,7 @@
     - collection 
         - MongoDB Document의 그룹, Document들이 Collection 내부에 위치
         - RDBMS의 테이블과 비슷한 개념
+=======
+# mongo-db
+주로 aurora, mysql 같은 관계형 DBMS 만 사용을 해왔으며, mongo db를 이용해서 개발을 진행을 해보고 싶었습니다.
+>>>>>>> origin/main
