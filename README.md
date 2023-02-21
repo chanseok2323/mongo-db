@@ -8,7 +8,8 @@
 
 ### Mongo DB ReplicaSet
 - docker-compose up
-  - docker exec -it mongo-1 mongosh --port 30000
+  docker exec -it mongo-1 mongosh --port 30000
+  
   config = {
     "_id" : "study-repliSet", 
     "members" : [
@@ -26,6 +27,7 @@
         }
     ]
   }
+  
   rs.initiate(config);
 
   use mongo-study
