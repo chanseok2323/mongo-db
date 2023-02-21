@@ -1,18 +1,29 @@
 package com.chanseok.mongodb.repository;
 
-import com.chanseok.mongodb.document.Member;
+import com.chanseok.mongodb.domain.Member;
 import lombok.extern.slf4j.Slf4j;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
+
+import static org.assertj.core.api.Assertions.*;
 
 @Slf4j
+@Transactional
 @SpringBootTest
 class MemberRepositoryTest {
 
     @Autowired
     MemberRepository memberRepository;
+
+    @Test
+    void mongo_replicaSet_transaction() {
+        boolean isTransactionActive = TransactionSynchronizationManager.isActualTransactionActive();
+        assertThat(isTransactionActive).isTrue();
+
+    }
 
     @Test
     void persist_mongodb() {
@@ -21,7 +32,6 @@ class MemberRepositoryTest {
 
         Member findMember = memberRepository.findById(member.getId()).orElseThrow();
 
-        Assertions.assertThat(member.getEmail()).isEqualTo(findMember.getEmail());
-
+        assertThat(member.getEmail()).isEqualTo(findMember.getEmail());
     }
 }

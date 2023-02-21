@@ -6,6 +6,31 @@
 - Spring Boot 2.7.8
 - Java 11
 
+### Mongo DB ReplicaSet
+- docker-compose up
+  - docker exec -it mongo-1 mongosh --port 30000
+  config = {
+    "_id" : "study-repliSet", 
+    "members" : [
+        {
+          "_id" : 0,
+          "host" : "mongo-1:30000"
+        },
+        {
+          "_id" : 1,
+          "host" : "mongo-2:30001"
+        },
+        {
+            "_id" : 2,
+            "host" : "mongo-3:30002"
+        }
+    ]
+  }
+  rs.initiate(config);
+
+  use mongo-study
+  db.createUser({user: "study", pwd: "1234", roles:["readWrite"]})
+
 ### 기본 MongoDB 명령어
 - 접속 : mongosh -u 계정 -p 비밀번호
 - 데이터베이스 리스트 조회 : show dbs
