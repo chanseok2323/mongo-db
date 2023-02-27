@@ -22,12 +22,15 @@ class MemberRepositoryTest {
     void mongo_replicaSet_transaction() {
         boolean isTransactionActive = TransactionSynchronizationManager.isActualTransactionActive();
         assertThat(isTransactionActive).isTrue();
-
     }
 
     @Test
     void persist_mongodb() {
-        Member member = new Member("chanseok", "chanseok2323@gmail.com", "1234", 30);
+        Member member = Member.builder()
+                .username("chanseok")
+                .age(31)
+                .password("1234")
+                .build();
         memberRepository.insert(member);
 
         Member findMember = memberRepository.findById(member.getId()).orElseThrow();

@@ -7,3 +7,4 @@ spring:
       username: study
       password: '1234'
       authentication-database: mongo-study
+      replica-set-name: study-repliSet
